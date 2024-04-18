@@ -1,0 +1,41 @@
+body {
+    background-image: url(./bulud.jpg);
+    background-size:cover;
+    
+}
+
+.inf {
+    background-color:white ;
+    margin-top: 50px;
+    margin-left: 400px;
+    height: 500px;
+    width: 600px ;
+    font-size: larger;
+    border-radius: 10px;
+    
+}
+
+.inp {
+    margin-top: 40px;
+    margin-left: 500px;
+    width: 400px;
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#btn {
+    margin-left: 20px;
+    
+}
+.svg {
+    width: 50px;
+    height: 60px;
+    
+}
+img{
+    width: 140px;
+    height: 140px;
+    margin-left: 100px;
+    
+}
