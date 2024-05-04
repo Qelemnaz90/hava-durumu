@@ -3,7 +3,7 @@ const API_KEY = `2fc6e4f10dfda63dfc74752f77ac98d2`
 const searchTemperature = () => {
     console.log("Search button clicked");
     const city = document.getElementById('inp').value;
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
     fetch(url)
         .then(res => res.json())
         .then(data => displayTemperature(data));
