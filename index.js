@@ -1,140 +1,36 @@
-let inp = document.querySelector('.inp')
-let inf = document.querySelector('.inf')
-let btn = document.querySelector('#btn')
+const API_KEY = `2fc6e4f10dfda63dfc74752f77ac98d2`
 
-let obj = {
-    baku: {
-        temp: {
-            day: 23,
-            night: 12,
-            
-        },
-        wind: {
-            speed: '23 m/s'
-        },
-        humudity: {
-            day: '50%',
-            night: '23%'
-        },
-        locat: {
-            city_name: 'Baku',
-            country: "Azerbaijan",
-            timezone: {
-                tm: 14400,
-                shortN: 'AZ/Baku'
-            }
-        }
-    },
-
-    sumgayit: {
-        temp: {
-            day: 23,
-            night: 12,
-            
-        },
-        wind: {
-            speed: '23 m/s'
-        },
-        humudity: {
-            day: '50%',
-            night: '23%'
-        },
-        locat: {
-            city_name: 'Sumgait',
-            country: "Azerbaijan",
-            timezone: {
-                tm: 14400,
-                
-            }
-        }
-    },
-
-    gence: {
-        temp: {
-            day: 15,
-            night: 12,
-            
-        },
-        wind: {
-            speed: '23 m/s'
-        },
-        humudity: {
-            day: '50%',
-            night: '23%'
-        },
-        locat: {
-            city_name: 'Gence',
-            country: "Azerbaijan",
-            timezone: {
-                tm: 14400,
-                
-            }
-        }
-    }
+const searchTemperature = () => {
+    console.log("Search button clicked");
+    const city = document.getElementById('inp').value;
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayTemperature(data));
 }
 
 
+const setInnerText = (id, text) =>{
+    document.getElementById(id).innerText = text;
+}
 
 
+const displayTemperature = temperature => {
+    console.log(temperature);
+    setInnerText('city', temperature.name);
+    setInnerText('temp', `${Math.round(temperature.main.temp - 273.15)}°C`);
+    setInnerText('weather', temperature.weather[0].main);
+
+    const url = ` http://openweathermap.org/img/wn/${temperature.weather[0].icon}.png`;
+    const imgIcon = document.getElementById('image-icon');
+    imgIcon.setAttribute('src', url);
+}
 
 
+const handleKeyPress = event => {
+    if (event.key === 'Enter') {
+        searchTemperature();
+    }
+};
 
-
-
-btn.addEventListener('click', function(){
-    if (inp.value === 'baku') { 
-        let locat = obj.baku.locat; 
-        let wind = obj.baku.wind;
-        let temperature = obj.baku.temp;
-        let humudity = obj.baku.humudity;
-        inf.innerText = `City_name: 'Baku',
-
-        Country: "Azerbaijan", 
-
-        Day Temperature: ${temperature.day}°C, 
-
-        Night Temperature: ${temperature.night}°C, 
-
-        Wind Speed: ${wind.speed},
-
-        Humudity: day: '50%', night: '23%'`;
-
-
-        let sun = document.createElement('img');
-        sun.src="./gunes.webp"
-        inf.appendChild(sun);
-        
-
-    }       else if (inp.value === 'sumgayit') { 
-            let locat = obj.sumgayit.locat; 
-            let wind = obj.sumgayit.wind;
-            let temperature = obj.sumgayit.temp;
-            let humudity = obj.sumgayit.humudity;
-            inf.innerText = `City_name: 'Sumgait',
-    
-            Country: "Azerbaijan", 
-    
-            Day Temperature: ${temperature.day}°C, 
-    
-            Night Temperature: ${temperature.night}°C, 
-    
-            Wind Speed: ${wind.speed},
-    
-            Humudity: day: '50%', night: '23%'`;
-    
-    
-            let cl = document.createElement('img');
-            cl.src="./cloudy.avif"
-            inf.appendChild(cl)     
-
-
-
-    } else {
-        inf.innerText = "City not found";
-    };
-
-
-
-
-
-});
+document.getElementById('inp').addEventListener('keypress', handleKeyPress);

@@ -1,25 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Document</title>
+    <title>weather</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <style>
+        body {
+            background: url("./wp10934512-hot-weather-wallpapers.jpg") ;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+        }
+    </style>
 </head>
+
 <body>
-<div class=icons>  
-    <input type="text" class="inp" placeholder="City name">
-    <a href="#"><i class="fa fa-search" id="btn"></i></a>
+    <div class="container">
+                <input id="inp" type="text" placeholder="Enter city name">
+                <button type="button" onclick="searchTemperature()"  class="btn">Search</button>
+            
+    </div>
 
-</div>
-
-    <div class="inf"></div>
-    <img class="sun">
-    <img class="cl">
-
-
-
-    <script src="./index.js"></script>
+        
+        <div class="weather">
+            
+            <img id="image-icon" src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <h1 id="city">Baku
+            <h3><span id="temp">20</span></h3>
+            <h1 class="lead" id="weather">Clouds</h1>
+        </div>
+<script src="./index.js"></script>
 </body>
+
 </html>
