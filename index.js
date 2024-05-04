@@ -21,7 +21,7 @@ const displayTemperature = temperature => {
     setInnerText('temp', `${Math.round(temperature.main.temp - 273.15)}°C`);
     setInnerText('weather', temperature.weather[0].main);
 
-    const url = ` http://openweathermap.org/img/wn/${temperature.weather[0].icon}.png`;
+    const url = ` https://openweathermap.org/img/wn/${temperature.weather[0].icon}.png`;
     const imgIcon = document.getElementById('image-icon');
     imgIcon.setAttribute('src', url);
 }
